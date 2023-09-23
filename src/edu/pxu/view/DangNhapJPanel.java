@@ -3,8 +3,8 @@ package edu.pxu.view;
 
 import edu.pxu.dialogcheck.sheardatta;
 import edu.pxu.dao.NhanVienDAO;
-import edu.pxu.login.KiemTra;
-import edu.pxu.login.ThongBao;
+import edu.pxu.dialogcheck.KIEMTRANGUOIDUNGHELPER;
+import edu.pxu.dialogcheck.MessageHerr;
 import edu.pxu.model.NhanVien;
 import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
@@ -146,17 +146,17 @@ public class DangNhapJPanel extends javax.swing.JFrame {
 
     private void btndangnhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndangnhapActionPerformed
         StringBuilder sb = new StringBuilder();
-        KiemTra.validateEmpty(txtten, sb, "Lỗi");
-        KiemTra.validateEmpty(txtmk, sb, "Lỗi");
+        KIEMTRANGUOIDUNGHELPER.validateEmpty(txtten, sb, "Lỗi");
+        KIEMTRANGUOIDUNGHELPER.validateEmpty(txtmk, sb, "Lỗi");
         if(sb.length()>0){
-            ThongBao.showErrorDialog(this, sb.toString(), "Tên đăng nhập không được để trống ! ");
+            MessageHerr.showErrorDialog(this, sb.toString(), "Tên đăng nhập không được để trống ! ");
             return;
         }
         try {
             NhanVienDAO dao = new NhanVienDAO();
             NhanVien nd = dao.checkLogin(txtten.getText(), new String(txtmk.getPassword()));
             if(nd==null){
-                ThongBao.showErrorDialog(this, "ten dang nhap sai hay mk sai","Tên đăng nhập hoặc mật khẩu bị sai !!" );
+                MessageHerr.showErrorDialog(this, "ten dang nhap sai hay mk sai","Tên đăng nhập hoặc mật khẩu bị sai !!" );
             }
             else{
                 sheardatta.nguoiDangNhap = nd;
@@ -166,7 +166,7 @@ public class DangNhapJPanel extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            ThongBao.showErrorDialog(this, e.getMessage(), "Tên đăng nhập hoặc mật khẩu bị sai !!");
+            MessageHerr.showErrorDialog(this, e.getMessage(), "Tên đăng nhập hoặc mật khẩu bị sai !!");
         }
     }//GEN-LAST:event_btndangnhapActionPerformed
 

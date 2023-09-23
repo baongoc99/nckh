@@ -131,7 +131,7 @@ public class SanPhamDAO {
     }
 
     public boolean delete1(SanPham bnv) throws SQLException, ClassNotFoundException, Exception {
-        String sql = "delete from sanpham where masanpham=?";
+        String sql = "update sanpham set soluong=0 where masanpham=?";
 
         Connection conn = ConnectJDBC.getConnection();
         PreparedStatement prst = conn.prepareStatement(sql);
@@ -146,7 +146,7 @@ public class SanPhamDAO {
         Statement sttm = null;
         List<SanPham> ls = new ArrayList<>();
         try {
-            String sql = "select * from sanpham where tensanpham like '" + name + "%'";
+            String sql = "select * from sanpham where tensanpham like '" + name + "%' and soluong>0";
             Connection conn = ConnectJDBC.getConnection();
             sttm = conn.createStatement();
             rs = sttm.executeQuery(sql);

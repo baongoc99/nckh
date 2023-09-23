@@ -99,13 +99,19 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         else
             jranu.setSelected(true);
     }
+    private void chekcv(String cv){
+       
+        if(cv.equals("Quản lý"))
+            jraql.setSelected(true);
+        else
+            jranv.setSelected(true);
+    }
     
     private void restmn(){
         txtdienthoai.setText("");
         txtmanv.setText("");
 //        txtngaysinh.setDate("");
         txtdiachi.setText("");
-        txtchucvu.setText("");
         txttennv.setText("");
         txtluong.setText("");
     }
@@ -127,7 +133,6 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         txtmanv = new javax.swing.JTextField();
         txttennv = new javax.swing.JTextField();
         txtluong = new javax.swing.JTextField();
-        txtchucvu = new javax.swing.JTextField();
         txtdienthoai = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jranam = new javax.swing.JRadioButton();
@@ -142,6 +147,8 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         txttendangnhap = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtmatkhau = new javax.swing.JTextField();
+        jraql = new javax.swing.JRadioButton();
+        jranv = new javax.swing.JRadioButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablenhanvien = new javax.swing.JTable();
@@ -159,7 +166,6 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1012, 701));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setPreferredSize(new java.awt.Dimension(1012, 701));
@@ -190,13 +196,6 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         txttennv.setPreferredSize(null);
 
         txtluong.setPreferredSize(null);
-
-        txtchucvu.setPreferredSize(null);
-        txtchucvu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtchucvuActionPerformed(evt);
-            }
-        });
 
         txtdienthoai.setPreferredSize(null);
 
@@ -240,6 +239,17 @@ public class NhanVienJPanel extends javax.swing.JFrame {
 
         txtmatkhau.setPreferredSize(null);
 
+        buttonGroup2.add(jraql);
+        jraql.setText("Quản lý");
+
+        buttonGroup2.add(jranv);
+        jranv.setText("Nhân viên");
+        jranv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jranvActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -274,19 +284,16 @@ public class NhanVienJPanel extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtmatkhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtchucvu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtluong, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txttendangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtluong, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txttendangnhap, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
@@ -294,10 +301,15 @@ public class NhanVienJPanel extends javax.swing.JFrame {
                         .addGap(61, 61, 61)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jranam, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jranu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jraql, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jranv))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jranam, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jranu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -336,8 +348,10 @@ public class NhanVienJPanel extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtchucvu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jraql)
+                                .addComponent(jranv)))
+                        .addGap(13, 13, 13)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(txtluong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -522,7 +536,7 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1021, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -555,7 +569,7 @@ public class NhanVienJPanel extends javax.swing.JFrame {
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         StringBuilder sb = new StringBuilder();
-        if(txtmanv.getText().equals("")||txttennv.getText().equals("")||txtngaysinh.getDate().equals("")||txtluong.getText().equals("")||txtchucvu.getText().equals("")||
+        if(txtmanv.getText().equals("")||txttennv.getText().equals("")||txtngaysinh.getDate().equals("")||txtluong.equals("")||buttonGroup2.equals("")||
                 txtdienthoai.getText().equals("")||txtdiachi.getText().equals("")){
             sb.append("Bạn chưa nhập đầy đủ thông tin!!!");
 //            JOptionPane.showMessageDialog(rootPane, "Bạn chưa nhập đầy đủ thông tin !!!");
@@ -578,7 +592,12 @@ public class NhanVienJPanel extends javax.swing.JFrame {
             }
             bnv.setEmail(txtEmail.getText());
             bnv.setLuong(Float.valueOf(txtluong.getText()));
-            bnv.setChucvu(txtchucvu.getText());
+//            bnv.setChucvu(txtchucvu.getText());
+            if(jraql.isSelected()){
+                bnv.setChucvu(jraql.getText());
+            }else if(jranv.isSelected()){
+                bnv.setChucvu(jranv.getText());
+            }
             bnv.setSdt(txtdienthoai.getText());
             bnv.setDiachi(txtdiachi.getText());
             bnv.setTendangnhap(txttendangnhap.getText());
@@ -634,7 +653,13 @@ public class NhanVienJPanel extends javax.swing.JFrame {
             }
             bnv.setEmail(txtEmail.getText());
             bnv.setLuong(Float.valueOf(txtluong.getText()));
-            bnv.setChucvu(txtchucvu.getText());
+//            bnv.setChucvu(txtchucvu.getText());
+            if(jraql.isSelected()){
+                bnv.setChucvu(jraql.getText());
+            }else if(jranv.isSelected()){
+                bnv.setChucvu(jranv.getText());
+            }
+            
             bnv.setSdt(txtdienthoai.getText());
             bnv.setDiachi(txtdiachi.getText());
             bnv.setTendangnhap(txttendangnhap.getText());
@@ -678,12 +703,13 @@ public class NhanVienJPanel extends javax.swing.JFrame {
                     txtngaysinh.setDate(b.getNgaysinh());
                     txtluong.setText(Float.valueOf(b.getLuong()).toString());
                     txtEmail.setText(b.getEmail());
-                    txtchucvu.setText(b.getChucvu());
+//                    txtchucvu.setText(b.getChucvu());
                     txtdiachi.setText(b.getDiachi());
                     txttennv.setText(b.getHotennv());
                     txttendangnhap.setText(b.getTendangnhap());
                     txtmatkhau.setText(b.getMatkhau());
                     chekgt(b.getGioitinh());
+                    chekcv(b.getChucvu());
                     
                 }
             }
@@ -714,9 +740,9 @@ public class NhanVienJPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchActionPerformed
 
-    private void txtchucvuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtchucvuActionPerformed
+    private void jranvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jranvActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtchucvuActionPerformed
+    }//GEN-LAST:event_jranvActionPerformed
 
    
     public static void main(String args[]) {
@@ -792,10 +818,11 @@ public class NhanVienJPanel extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JRadioButton jranam;
     private javax.swing.JRadioButton jranu;
+    private javax.swing.JRadioButton jranv;
+    private javax.swing.JRadioButton jraql;
     private javax.swing.JTextField jtfSearch;
     private javax.swing.JTable tablenhanvien;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtchucvu;
     private javax.swing.JTextPane txtdiachi;
     private javax.swing.JTextField txtdienthoai;
     private javax.swing.JTextField txtluong;

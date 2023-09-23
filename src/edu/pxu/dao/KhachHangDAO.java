@@ -21,7 +21,7 @@ public class KhachHangDAO {
         Connection conn = ConnectJDBC.getConnection();
         try {
             Statement stmt = conn.createStatement();
-            String sql = "select * from khachhang";
+            String sql = "select * from khachhang ";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 KhachHang bnv = new KhachHang();
@@ -46,7 +46,7 @@ public class KhachHangDAO {
         Statement sttm = null;
         List<KhachHang> ls = new ArrayList<>();
         try {
-            String sql = "select * from khachhang where tenkhachhang like '%" + name + "%%%%'";
+            String sql = "select * from khachhang where tenkhachhang like '%" + name + "%%%%' ";
             Connection conn = ConnectJDBC.getConnection();
             sttm = conn.createStatement();
             rs = sttm.executeQuery(sql);
