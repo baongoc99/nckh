@@ -6,14 +6,26 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
 public class MenuJPanel extends javax.swing.JFrame {
-
+    private sheardatta showuser;
     public MenuJPanel() {
         initComponents();
         setTitle("");
         initUI();
+        pro();
         lbltendangnhap.setText(sheardatta.nguoiDangNhap.getHotennv());
         lblchucvu.setText(sheardatta.nguoiDangNhap.getChucvu());
         
+    }
+    
+      private void pro() {
+        if (showuser.nguoiDangNhap.getChucvu().equals("Quản lý")) {
+
+        } else if (showuser.nguoiDangNhap.getChucvu().equals("Nhân viên")) {
+            btnnhanvien.setEnabled(false);
+            btnsanpham.setEnabled(false);
+            btnthongke.setEnabled(false);
+            btndoimk.setEnabled(false);
+        }
     }
     
     private void initUI() {
